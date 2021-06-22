@@ -1,26 +1,28 @@
 import Head from "next/head";
 import styles from '../../styles/todo.module.css';
 import {useState} from "react";
+import useSWR from 'swr'
 import axios from "axios";
 import Link from "next/link";
 
-export const getStaticProps = async () => {
-    const res = await fetch('https://express-todo-app.vercel.app/api/')
-    const data = await res.json();
+const fetcher = (url) => fetch(url).then(res => res.json());
 
-    return{
-        props: {
-            todos: data
-        },
-        revalidate: 1
-    }
+export const getStaticProps = async () => {
+    const data = await fetcher('https://express-todo-app.vercel.app/api/')
+    return { props: { initialData: data } }
 }
 
-const Index = ({todos}) => {
+const Index = ({initialData }) => {
     const [nickname, setNickname] = useState('');
     const [text, setText] = useState('');
     const [comment, setComment] = useState('');
     const [message, setMessage] = useState(false);
+
+
+    const { data } = useSWR('https://express-todo-app.vercel.app/api/', fetcher, initialData);
+
+    if (!data) return <div>loading...</div>
+
 
     const Save = async () => {
         let config = {
@@ -78,12 +80,12 @@ const Index = ({todos}) => {
             <a className={styles.btn} onClick={Save}>Index list</a>
         {/*</Link>*/}
         {
-            todos.map(todo =>
-                <div className={styles.itemContainer} key={todo.id}>
+            initialData .map(initialData  =>
+                <div className={styles.itemContainer} key={initialData.id}>
                     <a className={styles.single}>
-                        <h3>{ todo.nickname }</h3>
-                        <p>{ todo.date }</p>
-                        <h3>{ todo.text }</h3>
+                        <h3>{ initialData.nickname }</h3>
+                        <p>{ initialData.date }</p>
+                        <h3>{ initialData.text }</h3>
                     </a>
                 </div>
             )
