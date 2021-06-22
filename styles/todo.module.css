@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
+
+.formField {
+    font-family: "Nunito";
+    width: 100%;
+    height: 46px;
+    padding: 0 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: .2s;
+}
+
+.formField:focus {
+    border-color: #0f7ef1;
+}
+
+.container {
+    display: flex;
+    /*justify-content: center;*/
+    padding: 0;
+    margin: 0;
+    grid-gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.btn {
+    display: block;
+    width: 150px;
+    padding: 8px 0;
+    margin: 50px auto;
+    background: rgba(45, 189, 70, 0.86);
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+}
+
+.textarea{
+    font-family: "Nunito";
+    width: 100%;
+    height: 46px;
+    padding: 10px 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: .2s;
+}
+
+.single {
+    word-wrap: break-word;
+    padding: 2px 16px;
+    background: #fff;
+    display: block;
+    margin: 20px 10px;
+    border-left: 8px solid #fff;
+}
+
+.itemContainer{
+}

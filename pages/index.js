@@ -16,6 +16,9 @@ const Home = () => {
                 <Link href="/fishes">
                     <a className={styles.btn}>See fishes Listing</a>
                 </Link>
+                <Link href="/todo">
+                    <a className={styles.btn}>Todo list</a>
+                </Link>
             </div>
         </>
     )
