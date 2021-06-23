@@ -7,7 +7,7 @@ const Home = () => {
         <>
             <Head>
             <title>Fishes | Home</title>
-                <meta name="keyword" content="Fish" />
+                <meta name="keyword" content="Fish, asus18019, 05024787555, voloxanvitya@yandex.ua, fakfkfkff123123123" />
             </Head>
             <div>
                 <h1 className={styles.title}>Homepage</h1>
