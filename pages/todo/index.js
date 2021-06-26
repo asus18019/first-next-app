@@ -41,9 +41,15 @@ const Index = ({todos}) => {
             // credentials: 'include',
             body: new URLSearchParams(body)
 
-        }).then(() => setMessage(true)).then(() => setTimeout(setMessage(false),2000));
-
-
+        });
+        const content = await response.json();
+        if(response.status === 400){
+            alert("Errors");
+        } else if(response.status === 200) {
+            alert("Added")
+        } else {
+            alert("unhandled error: " + response.status);
+        }
     }
 
     return(
@@ -79,6 +85,7 @@ const Index = ({todos}) => {
                         <h3>{ todo.nickname }</h3>
                         <p>{ todo.date }</p>
                         <h3>{ todo.text }</h3>
+                        <h3>{ todo._id }</h3>
                     </a>
                 </div>
             )
