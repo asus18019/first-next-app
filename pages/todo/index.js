@@ -30,29 +30,19 @@ const Index = ({todos}) => {
         }
 
         const body = {
-            nickname: 'aaaa',
-            text: 'aaaaa',
-            comment: 'aaaaa'
+            nickname: nickname,
+            text: text,
+            comment: comment
         }
-
-        console.log(body)
-        //
-        // axios.post('https://express-todo-app.vercel.app/api/add', {nickname ,text, comment}).catch(
-        //     err => {
-        //         console.log(err);
-        //     })
 
         const response = await fetch('https://express-todo-app.vercel.app/api/add', {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded', 'mode': 'no-cors'},
             // credentials: 'include',
-            body: new URLSearchParams({
-                'nickname': 'aaaa',
-                'text': 'aaaaa',
-                'comment': 'aaaaa'
-            })
+            body: new URLSearchParams(body)
 
-        });
+        }).then(() => setMessage(true)).then(() => setTimeout(setMessage(false),2000));
+
 
     }
 
