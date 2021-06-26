@@ -52,6 +52,18 @@ const Index = ({todos}) => {
         }
     }
 
+    const Delete = async (id) => {
+        const idObj = {
+            id: id,
+        }
+        const response = await fetch('https://express-todo-app.vercel.app/api/remove', {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded', 'mode': 'no-cors'},
+            body: new URLSearchParams(idObj),
+        });
+        alert('deleted');
+    }
+
     return(
     <>
         <Head>
@@ -85,7 +97,7 @@ const Index = ({todos}) => {
                         <h3>{ todo.nickname }</h3>
                         <p>{ todo.date }</p>
                         <h3>{ todo.text }</h3>
-                        <h3>{ todo._id }</h3>
+                        <button onClick={Delete(todo._id)}>delete</button>
                     </a>
                 </div>
             )
