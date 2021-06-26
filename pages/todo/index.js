@@ -7,16 +7,17 @@ import useSWR from 'swr';
 
 
 export const getStaticProps = async () => {
-    const res = await fetcher('https://express-todo-app.vercel.app/api/')
+    const res = await fetch('https://express-todo-app.vercel.app/api/')
     const data = await res.json();
 
     return{
         props: {
-            todos: res
+            todos: data
         },
         revalidate: 1
     }
 }
+
 
 const fetcher = (url) => fetch(url).then(res => res.json())
 
