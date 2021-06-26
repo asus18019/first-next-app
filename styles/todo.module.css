@@ -37,6 +37,10 @@
     text-align: center;
 }
 
+.btn:hover {
+    cursor: pointer;
+}
+
 .textarea{
     font-family: "Nunito";
     width: 100%;
