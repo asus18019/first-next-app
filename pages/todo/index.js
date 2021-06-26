@@ -97,7 +97,7 @@ const Index = ({todos}) => {
                         <h3>{ todo.nickname }</h3>
                         <p>{ todo.date }</p>
                         <h3>{ todo.text }</h3>
-                        <button onClick={Delete(todo._id)}>delete</button>
+                        <button onClick={() => Delete(todo._id)}>delete</button>
                     </a>
                 </div>
             )
