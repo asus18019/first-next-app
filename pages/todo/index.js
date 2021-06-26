@@ -46,7 +46,12 @@ const Index = ({todos}) => {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded', 'mode': 'no-cors'},
             // credentials: 'include',
-            body: body,
+            body: new URLSearchParams({
+                'nickname': 'aaaa',
+                'text': 'aaaaa',
+                'comment': 'aaaaa'
+            })
+
         });
 
     }
