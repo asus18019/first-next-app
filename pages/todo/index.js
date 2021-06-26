@@ -3,20 +3,27 @@ import styles from '../../styles/todo.module.css';
 import {useState} from "react";
 import axios from "axios";
 import Link from "next/link";
+import useSWR from 'swr';
+
 
 export const getStaticProps = async () => {
-    const res = await fetch('https://express-todo-app.vercel.app/api/')
+    const res = await fetcher('https://express-todo-app.vercel.app/api/')
     const data = await res.json();
 
     return{
         props: {
-            todos: data
+            todos: res
         },
         revalidate: 1
     }
 }
 
+const fetcher = (url) => fetch(url).then(res => res.json())
+
 const Index = ({todos}) => {
+    const initialData = todos;
+    const { data } = useSWR('https://express-todo-app.vercel.app/api/', fetcher, { initialData })
+
     const [nickname, setNickname] = useState('');
     const [text, setText] = useState('');
     const [comment, setComment] = useState('');
@@ -91,7 +98,7 @@ const Index = ({todos}) => {
             <a className={styles.btn} onClick={Save}>Index list</a>
         {/*</Link>*/}
         {
-            todos.map(todo =>
+            data.map(todo =>
                 <div className={styles.itemContainer} key={todo.id}>
                     <a className={styles.single}>
                         <h3>{ todo.nickname }</h3>
