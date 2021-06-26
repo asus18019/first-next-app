@@ -45,7 +45,7 @@ const Index = ({todos}) => {
         const response = await fetch('https://express-todo-app.vercel.app/api/add', {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded', 'mode': 'no-cors'},
-            credentials: 'include',
+            // credentials: 'include',
             body: body,
         });
 
