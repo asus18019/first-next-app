@@ -7,16 +7,15 @@ import useSWR from 'swr';
 import { useQuery } from 'react-query'
 
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
     const res = await fetch('https://express-todo-app.vercel.app/api/')
     const data = await res.json();
 
     return{
         props: {
             todos: data
-        }
-//         ,
-//         revalidate: 1
+        },
+        revalidate: 1
     }
 }
 
