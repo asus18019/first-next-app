@@ -14,8 +14,9 @@ export const getServerSideProps = async () => {
     return{
         props: {
             todos: data
-        },
-        revalidate: 1
+        }
+//         ,
+//         revalidate: 1
     }
 }
 
