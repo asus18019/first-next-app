@@ -4,7 +4,6 @@ import {useState} from "react";
 import axios from "axios";
 import Link from "next/link";
 import useSWR from 'swr';
-import { useQuery } from 'react-query'
 
 
 export const getStaticProps = async () => {
@@ -24,8 +23,7 @@ const fetcher = (url) => fetch(url).then(res => res.json())
 
 const Index = ({todos}) => {
     const initialData = todos;
-    // const { data } = useSWR('https://express-todo-app.vercel.app/api/', fetcher, { initialData })
-    const { data } = useQuery('https://express-todo-app.vercel.app/api/', fetcher(), { initialData })
+    const { data } = useSWR('https://express-todo-app.vercel.app/api/', fetcher, { initialData })
 
     const [nickname, setNickname] = useState('');
     const [text, setText] = useState('');
