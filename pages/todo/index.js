@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import { useQuery } from 'react-query'
 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const res = await fetch('https://express-todo-app.vercel.app/api/')
     const data = await res.json();
 
